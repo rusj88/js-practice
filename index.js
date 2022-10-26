@@ -9,3 +9,22 @@ Function.prototype.myBind = function(ctx, ...args) {
     return result
   }
 }
+
+
+//function to flatten array
+
+function flatten(array) {
+  const res = []
+  const helper = (arr) => {
+    for (let i = 0; i < arr.length; i++) {
+      const elem = arr[i]
+      if (Array.isArray(elem)) {
+        helper(elem)
+      } else {
+        res.push(elem)
+      }
+    }
+  }
+  helper(array)
+  return res
+}
