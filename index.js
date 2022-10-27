@@ -11,7 +11,7 @@ Function.prototype.myBind = function(ctx, ...args) {
 }
 
 
-//function to flatten array
+//function to flatten an array
 
 function flatten(array) {
   const res = []
@@ -28,3 +28,15 @@ function flatten(array) {
   helper(array)
   return res
 }
+
+//debounce implementation
+
+const debounce = (fn, debounceTime) => {
+  let timerId;
+  return function () {
+    if (timerId) {
+      clearTimeout(timerId);
+    }
+    timerId = setTimeout(fn.bind(this, ...arguments), debounceTime);
+  };
+};
