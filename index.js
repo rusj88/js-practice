@@ -40,3 +40,16 @@ const debounce = (fn, debounceTime) => {
     timerId = setTimeout(fn.bind(this, ...arguments), debounceTime);
   };
 };
+
+//throttle implementation
+
+const throttle = (fn, throttleTime) => {
+  let called = false;
+  return function () {
+    if (!called) {
+      called = true;
+      fn.apply(this, arguments);
+      setTimeout(() => (called = false), throttleTime);
+    }
+  };
+}
