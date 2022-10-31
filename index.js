@@ -10,6 +10,18 @@ Function.prototype.myBind = function(ctx, ...args) {
   }
 }
 
+//custom implementation of map
+
+ Array.prototype.map = function(cb, ctx) {
+   const newArr = []
+   newArr.length = this.length
+   for (let i = 0; i < this.length; i++) {
+     if (i in this) {
+      newArr[i] = (cb.call(ctx, this[i], i, this))
+     }
+   }
+   return newArr
+ }
 
 //function to flatten an array
 
