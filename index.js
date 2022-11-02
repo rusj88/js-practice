@@ -65,3 +65,13 @@ const throttle = (fn, throttleTime) => {
     }
   };
 }
+
+//Promise.all() implementation
+
+async function promiseAll(promises) {
+let arr = []
+for (let i = 0; i < promises.length; i++) {
+    arr[i] = (await promises[i])
+}
+return arr
+}
