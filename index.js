@@ -41,6 +41,39 @@ function flatten(array) {
   return res
 }
 
+//function for comparing objects
+
+function deepEqual(obj1, obj2) {
+	const isObject = (obj) => typeof obj === "object";
+	const isNull = (obj) => obj === null;
+
+	if ((!isObject(obj1) && !isObject(obj2)) || isNull(obj1) || isNull(obj2)) {
+		return obj1 === obj2;
+	}
+
+	if (Object.keys(obj1).length != Object.keys(obj2).length) {
+		return false;
+	}
+
+	for (key in obj1) {
+		if (
+			!isObject(obj1[key]) &&
+			!isObject(obj2[key]) &&
+			obj1[key] !== obj2[key]
+		) {
+			return false;
+		}
+		if (
+			isObject(obj1) &&
+			isObject(obj2) &&
+			!deepEqual(obj1[key], obj2[key])
+		) {
+			return false;
+		}
+	}
+	return true;
+}
+
 //debounce implementation
 
 const debounce = (fn, debounceTime) => {
