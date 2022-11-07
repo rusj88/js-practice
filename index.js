@@ -74,6 +74,19 @@ function deepEqual(obj1, obj2) {
 	return true;
 }
 
+//function that returns the n-th number in the Fibonacci Sequence.
+
+function nthFibo(n) {
+    let seq = [0,1]
+    if (n === 1) {
+        return 0
+    }
+    while (seq.length < n) {
+        seq.push(seq[seq.length-2] + seq[seq.length-1])
+    }
+    return seq[seq.length-1]
+}
+
 //debounce implementation
 
 const debounce = (fn, debounceTime) => {
